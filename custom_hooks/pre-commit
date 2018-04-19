@@ -1,0 +1,41 @@
+#!/bin/sh
+
+# Extract VBA scripts from excel files
+py -3 ./extract-vba.py
+
+# Add the extracted VBA scripts to the commit
+DIR_PATTERN="./*.xls.vba/"
+if [ -d $DIR_PATTERN ]
+then
+    git add $DIR_PATTERN
+fi
+
+DIR_PATTERN="./*.xlsb.vba/"
+if [ -d $DIR_PATTERN ]
+then
+    git add $DIR_PATTERN
+fi
+
+DIR_PATTERN="./*.xlsm.vba/"
+if [ -d $DIR_PATTERN ]
+then
+    git add $DIR_PATTERN
+fi
+
+DIR_PATTERN="./*.xla.vba/"
+if [ -d $DIR_PATTERN ]
+then
+    git add $DIR_PATTERN
+fi
+
+DIR_PATTERN="./*.xlam.vba/"
+if [ -d $DIR_PATTERN ]
+then
+    git add $DIR_PATTERN
+fi
+
+DIR_PATTERN="./*.xlt.vba/"
+if [ -d $DIR_PATTERN ]
+then
+    git add $DIR_PATTERN
+fi
