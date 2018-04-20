@@ -1,12 +1,15 @@
 # Version control of VBA scripts
-Tracking changes to VBA code in Excel files is done by using a python script to extract the VBA code of the Excel file into separate files as described here: https://www.xltrail.com/blog/auto-export-vba-commit-hook
+This repo hosts an example of how to use a Python script and pre-commit hooks of git to track changes to VBA code in Excel files.
 
-The python script that extracts the VBA code (extract-vba.py) is placed directly in the repository root.
-
-The script is called by use of a custom pre-commit [git hook](https://git-scm.com/docs/githooks) which is called before every commit.
+The change tracking of VBA code is achieved by using a python script to extract the VBA code of the Excel file into separate files. It is based on the following article by Björn Stiel: https://www.xltrail.com/blog/auto-export-vba-commit-hook
 
 ## Dependencies
 This example requires [python 3](https://www.python.org/downloads/windows/) and [Python Launcher](https://docs.python.org/3/using/windows.html#launcher) to be installed on the local machine to work out-of-the-box. The extract-vba.py script has a dependency against [oletools](https://github.com/decalage2/oletools) which can be installed by use of Python's package manager: `pip install -U oletools`
+
+## How it works
+The python script `extract-vba.py` which is used to extract the VBA code, is placed directly in the repository root. The script extracts any VBA code found in any Excel file into separate files which are placed in a subdirectory named the same as the respective Excel file including extension and suffixed with '.vba'.
+
+The script is called by use of a custom pre-commit [git hook](https://git-scm.com/docs/githooks) which is called before every commit as described below.
 
 ## Change tracking of custom git hooks
 By default, files in the ./git/hooks directory are not tracked and will not be a part of the project.
